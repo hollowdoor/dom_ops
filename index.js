@@ -3,6 +3,11 @@ module.exports = function(element, template){
     return new DomOps(element, template);
 };
 
+/*
+git remote add origin https://github.com/hollowdoor/dom_ops.git
+git push -u origin master
+*/
+
 function DomOps(element, template){
     this.root = element;
     this.recent = null;
