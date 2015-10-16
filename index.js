@@ -26,6 +26,12 @@ function DomOps(element, template){
         value: element.classList
     });
 
+    Object.defineProperty(this, 'style', {
+        get: function(){
+            return element.style;
+        }
+    });
+
     if(typeof template === 'function'){
         this.template = template;
         this.templateSet = true;

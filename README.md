@@ -124,6 +124,10 @@ A reference to the element's classList object property. For using DOM classList 
 
 The last added child of element.
 
+### style
+
+A reference to the element's style property.
+
 Static Methods
 --------------
 
