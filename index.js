@@ -1,8 +1,9 @@
 var domFrom = require('dom-from'),
     linkCSS = require('link-css');
-module.exports = function(element, template){
+
+function Ex(element, template){
     return new DomOps(element, template);
-};
+}
 
 /*
 git remote add origin https://github.com/hollowdoor/dom_ops.git
@@ -130,5 +131,7 @@ DomOps.prototype = {
     }
 };
 
-DomOps.domFrom = domFrom;
-DomOps.linkCSS = linkCSS;
+Ex.domFrom = domFrom;
+Ex.linkCSS = linkCSS;
+
+module.exports = Ex;
