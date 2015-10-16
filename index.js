@@ -73,8 +73,15 @@ DomOps.prototype = {
         return this;
     },
     remove: function(index){
+        var result = null;
+        if(isNaN(index) && !isNaN(index.nodeType)){
+            result = index;
+        }
         index = this._resolvePosition(index);
-        return this.root.removeChild(this.children[index]);
+        if(!result)
+            return this.root.removeChild(this.children[index]);
+        this.root.removeChild(this.children[index]);
+        return result;
     },
     _resolvePosition: function(index){
         if(!isNaN(index))

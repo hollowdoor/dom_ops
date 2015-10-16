@@ -79,6 +79,8 @@ Replace a child at index, or the matched child with toAdd.
 
 Remove the child at index, or the matched child. Returns the removed child.
 
+If you pass an index you'll get the template returned. If you pass a child node remove will return that.
+
 ### indexOf(child)
 
 Get the index of the child of element.
