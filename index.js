@@ -118,6 +118,11 @@ DomOps.prototype = {
 
         return null;
     },
+    html: function(str){
+        if(str === undefined)
+            return this.root.innerHTML;
+        this.root.innerHTML = str;
+    },
     get: function(index){
         index = this._resolveIndex(index);
         return this.children[index];

@@ -97,6 +97,14 @@ Keep reference variables to the children of a template if you need to operate on
 
 Get the child, or child template at the child index of element.
 
+### html(string)
+
+Pass a string to set innerHTML. Pass nothing to get innerHTML returned.
+
+The `html` method is mostly for completeness. It could mostly be useful for clearing the contents of element.
+
+The template callback is not called with the `html` method.
+
 Properties
 ----------
 
