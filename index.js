@@ -1,4 +1,5 @@
-var domFrom = require('dom-from');
+var domFrom = require('dom-from'),
+    linkCSS = require('link-css');
 module.exports = function(element, template){
     return new DomOps(element, template);
 };
@@ -130,3 +131,4 @@ DomOps.prototype = {
 };
 
 DomOps.domFrom = domFrom;
+DomOps.linkCSS = linkCSS;

@@ -140,6 +140,12 @@ value can be any of these:
 
 See [dom-from](https://www.npmjs.com/package/dom-from) for more details.
 
+### linkCSS
+
+Add a CSS link to the head node.
+
+See [link-css](https://www.npmjs.com/package/link-css).
+
 More Info
 ---------
 
