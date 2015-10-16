@@ -109,14 +109,15 @@ DomOps.prototype = {
     indexOf: function(node){
         var p;
         if(node.parentNode !== this.root){
-            node = node.parentNode;
-            while(p = node.parentNode){
-                if(p === this.root){
+            while(node && (p = node.parentNode)){
+                if(p === this.root)
                     break;
-                }
                 node = p;
             }
         }
+
+        if(!node)
+            return null;
 
         for(var i=0; i<this.children.length; i++){
             if(this.children[i] === node){
