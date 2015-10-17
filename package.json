@@ -1,6 +1,6 @@
 {
   "name": "dom-ops",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Manipulate the DOM of an element",
   "main": "index.js",
   "scripts": {
