@@ -130,6 +130,8 @@ DomOps.prototype = {
         }else{
             node = node + '';
             for(i=0; i<this.children.length; i++){
+                if(node === this.children[i].outerHTML)
+                    return i;
                 parts = this.children[i].outerHTML.split(node);
                 if(parts.length > 1)
                     return i;
@@ -139,8 +141,57 @@ DomOps.prototype = {
         return null;
 
     },
-    match: function(pattern){
-        console.log('this is a place holder');
+    match: function(pattern, op){
+        var list = [], i, j, propRegex, prop, found = false;
+        if(!op){
+            for(i=0; i<this.children.length; i++){
+                if(pattern.test(this.children[i].textContent)){
+                    c = this.children[i].getElementsByTagName('*');
+                    if(c.length){
+                        for(j=0; j<c.length; j++){
+                            if(pattern.test(c[j].textContent)){
+                                list.push(c[j]);
+                                found = true;
+                            }
+                        }
+
+                        if(!found)
+                            list.push(this.children[i]);
+                    }else{
+                        list.push(this.children[i]);
+                    }
+                    found = false;
+                }
+            }
+            return list;
+        }else if(op instanceof RegExp){
+            if(typeof pattern !== 'string') return list;
+            prop = pattern;
+            propRegex = new RegExp('('+escapeRegExp(pattern)+')="([^"]+)"');
+            pattern = op;
+            for(i=0; i<this.children.length; i++){
+                if((m = this.children[i].outerHTML.match(propRegex))){
+                    if(this.children[i].hasAttribute(prop)){
+                        if(pattern.test(this.children[i].getAttribute(prop))){
+                            list.push(this.children[i]);
+                        }
+
+                    }else{
+                        c = this.children[i].getElementsByTagName('*');
+                        for(j=0; j<c.length; j++){
+                            if(c[j].hasAttribute(prop)){
+                                if(pattern.test(c[j].getAttribute(prop))){
+                                    list.push(c[j]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            return list;
+        }
+
     },
     html: function(str){
         if(str === undefined)
@@ -157,3 +208,9 @@ Ex.domFrom = domFrom;
 Ex.linkCSS = linkCSS;
 
 module.exports = Ex;
+
+//from
+//http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+function escapeRegExp(str) {
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
