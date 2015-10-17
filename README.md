@@ -91,7 +91,9 @@ Any children of children of children, ... and so on passed to indexOf will get t
 
 indexOf is used internally so DOM operations like replace will work to replace any value added by itself, or contained in a template you provide. Alternatively you can just pass an index to a method that accepts an index.
 
-Keep reference variables to the children of a template if you need to operate on those later. indexOf won't serve you to get references of children of a template.
+Keep reference variables to the children of a template if you need to operate on those later.
+
+**If you use operations like append with strings the same strings can be used with indexOf**. The look up for a string in indexOf is not discriminatory in any way so know that only the first match will be used. The algorithm is very simple so there will sometimes be false positives if your input string is not very unique.
 
 ### get(index)
 

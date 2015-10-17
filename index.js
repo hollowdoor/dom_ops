@@ -107,25 +107,40 @@ DomOps.prototype = {
         return index;
     },
     indexOf: function(node){
-        var p;
-        if(node.parentNode !== this.root){
-            while(node && (p = node.parentNode)){
-                if(p === this.root)
-                    break;
-                node = p;
+        var p, parts, i;
+        if(node.parentNode){
+            if(node.parentNode !== this.root){
+                while(node && (p = node.parentNode)){
+                    if(p === this.root)
+                        break;
+                    node = p;
+                }
             }
-        }
 
-        if(!node)
+            if(!node)
+                return null;
+
+            for(i=0; i<this.children.length; i++){
+                if(this.children[i] === node){
+                    return i;
+                }
+            }
+
             return null;
-
-        for(var i=0; i<this.children.length; i++){
-            if(this.children[i] === node){
-                return i;
+        }else{
+            node = node + '';
+            for(i=0; i<this.children.length; i++){
+                parts = this.children[i].outerHTML.split(node);
+                if(parts.length > 1)
+                    return i;
             }
         }
 
         return null;
+
+    },
+    match: function(pattern){
+        console.log('this is a place holder');
     },
     html: function(str){
         if(str === undefined)
