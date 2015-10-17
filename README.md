@@ -95,6 +95,25 @@ Keep reference variables to the children of a template if you need to operate on
 
 **If you use operations like append with strings the same strings can be used with indexOf**. The look up for a string in indexOf is not discriminatory in any way so know that only the first match will be used. The algorithm is very simple so there will sometimes be false positives if your input string is not very unique.
 
+### match(RegExp|attribute name, RegExp) Array
+
+Match the element, or children based on a regular expression.
+
+The second argument is optional.
+
+A regular expression in the first argument matches textContent of elements. Matched elements are returned in an array.
+
+If you pass a string to the first argument `match` will look for attribute names that are the same as that string.
+
+The regular expression in the second argument will match on attribute values, and return those elements that have those attributes matched.
+
+```javascript
+//All elements with textContent = "contents of element" return.
+var listOfElements = div.match(/contents of element/);
+//All elements with the attribute data-store = "something" are returned.
+var elmentsWithAttribute = div.match('data-store', /something/);
+```
+
 ### get(index)
 
 Get the child, or child template at the child index of element.
