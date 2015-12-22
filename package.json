@@ -1,6 +1,6 @@
 {
   "name": "dom-ops",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Manipulate the DOM of an element",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,9 @@
   "dependencies": {
     "dom-from": "^1.0.0",
     "link-css": "^0.1.2"
-  }
+  },
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/hollowdoor/dom_ops.git"
+    }
 }
